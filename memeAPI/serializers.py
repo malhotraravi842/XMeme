@@ -9,3 +9,7 @@ class MemeSerializers(serializers.ModelSerializer):
         fields = (
             'id', 'name', 'caption', 'url'
         )
+        # extra_kwargs = {
+        #     'id': {'read_only': True},
+        #     'name': {'read_only': True},
+        # }

@@ -1,9 +1,10 @@
 from django.urls import path, include, re_path
-from rest_framework.routers import DefaultRouter
+from rest_framework.routers import SimpleRouter
 from .views import MemeViewSet
 from dashboard.models import Meme
 
-router = DefaultRouter()
+# router = DefaultRouter()
+router = SimpleRouter(trailing_slash=False)
 router.register(r'memes', MemeViewSet)
 
 urlpatterns = [

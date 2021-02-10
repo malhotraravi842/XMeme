@@ -84,11 +84,14 @@ DATABASES = {
     }
 }
 
-# REST_FRAMEWORK = {
-#     'DEFAULT_RENDERER_CLASSES': (
-#         'rest_framework.renderers.JSONRenderer',
-#     )
-# }
+APPEND_SLASH=False 
+
+REST_FRAMEWORK = {
+    # 'EXCEPTION_HANDLER': 'my_project.my_app.utils.custom_exception_handler',
+    # 'DEFAULT_RENDERER_CLASSES': (
+    #     'rest_framework.renderers.JSONRenderer',
+    # )
+}
 
 
 # Password validation
@@ -132,3 +135,6 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+
+CORS_ORIGIN_ALLOW_ALL = True

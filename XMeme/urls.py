@@ -19,7 +19,7 @@ from dashboard import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.MemeListView, name='meme_list'),
+    path('', views.MemeListView.as_view() , name='meme_list'),
     path('', include('memeAPI.urls')),
     # path('', views.MemeListView.as_view(), name='meme_list'),
 ]
