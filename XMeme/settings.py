@@ -41,11 +41,13 @@ INSTALLED_APPS = [
     'rest_framework',
     'dashboard',
     'memeAPI',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -85,6 +87,8 @@ DATABASES = {
 }
 
 APPEND_SLASH=False 
+
+CORS_ORIGIN_ALLOW_ALL = True
 
 REST_FRAMEWORK = {
     # 'EXCEPTION_HANDLER': 'my_project.my_app.utils.custom_exception_handler',
@@ -135,6 +139,3 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
-
-CORS_ORIGIN_ALLOW_ALL = True
