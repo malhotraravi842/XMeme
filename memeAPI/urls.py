@@ -1,12 +1,11 @@
-from django.urls import path, include, re_path
-from rest_framework.routers import SimpleRouter
-from .views import MemeViewSet
+from django.urls import path
+from memeAPI import views
 from dashboard.models import Meme
-
-router = SimpleRouter(trailing_slash=False)
-router.register(r'memes', MemeViewSet)
+from rest_framework.urlpatterns import format_suffix_patterns
 
 urlpatterns = [
-    path('', include(router.urls)),
-    path('api-auth/', include('rest_framework.urls',  namespace='rest_framework')),
+    path('memes', views.meme_list),
+    path('memes/<int:pk>', views.meme_detail),
 ]
+
+urlpatterns = format_suffix_patterns(urlpatterns)

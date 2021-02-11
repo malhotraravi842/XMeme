@@ -1,36 +1,11 @@
-import django
 from dashboard.forms import PostMeme
 from django.shortcuts import render
-from django.views.generic import ListView, FormView
 from django.http import HttpResponseRedirect
 from .models import Meme
-from django.utils import timezone
 from django.core.paginator import Paginator
-
-# class MemeListView(FormView, ListView):
-#     template_name = 'dashboard/index.html'
-#     model = Meme
-#     form_class = PostMeme
-
-    # def get(self, request, *args, **kwargs):
-    #     form = self.form_class(initial=self.initial)
-    #     return render(request, self.template_name, {'form':form})
-
-    # def post(self, request, *args, **kwargs):
-    #     form = self.form_class(request.POST)
-    #     if form.is_valid():
-    #         return HttpResponseRedirect('/success/')
-
-    #     return render(request, self.template_name, {'form': form})
-
-
-    # template_name = 'dashboard/index.html'
-    # model = Meme
 from rest_framework.renderers import TemplateHTMLRenderer
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from django.shortcuts import get_object_or_404
-from memeAPI.serializers import MemeSerializers
 
 
 class MemeListView(APIView):

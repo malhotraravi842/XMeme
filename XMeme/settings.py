@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'rest_framework_swagger',
     'dashboard',
     'memeAPI',
     'corsheaders',
@@ -86,7 +87,7 @@ DATABASES = {
     }
 }
 
-APPEND_SLASH=False 
+# APPEND_SLASH=False 
 
 CORS_ORIGIN_ALLOW_ALL = True
 
