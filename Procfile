@@ -1,1 +1,0 @@
-web: gunicorn XMeme.wsgi --log-file
