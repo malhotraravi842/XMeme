@@ -87,17 +87,7 @@ DATABASES = {
     }
 }
 
-# APPEND_SLASH=False 
-
 CORS_ORIGIN_ALLOW_ALL = True
-
-REST_FRAMEWORK = {
-    # 'EXCEPTION_HANDLER': 'my_project.my_app.utils.custom_exception_handler',
-    # 'DEFAULT_RENDERER_CLASSES': (
-    #     'rest_framework.renderers.JSONRenderer',
-    # )
-}
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
