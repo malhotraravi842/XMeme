@@ -33,8 +33,6 @@ python manage.py migrate
 
 ## Deployment(Azure Compute Engine or AWS EC2)
 ```bash
-cd malhotraravi842-me_buildout_xmeme/XMeme
-
 chmod +x test_server.sh
 
 sudo ./test_server.sh
