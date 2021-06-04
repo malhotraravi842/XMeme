@@ -44,7 +44,7 @@ def meme_list(request):
     """
     if request.method == 'GET':
         snippets =  Meme.objects.all()
-        serializer = MemeSerializers(snippets, many=True)
+        serializer = MemeSerializers(snippets, context={"request": request}, many=True)
         return Response(serializer.data)
 
     elif request.method == 'POST':

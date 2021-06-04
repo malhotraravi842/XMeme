@@ -10,7 +10,7 @@ from rest_framework.views import APIView
 
 def homepage(request):
     if request.method == 'POST':
-        form = PostMeme(request.POST)
+        form = PostMeme(request.POST, request.FILES)
         if form.is_valid:
             form.save()
 
@@ -34,7 +34,7 @@ def delete_meme(request, id):
 def update_meme(request, id):
     if request.method == 'POST':
         meme = Meme.objects.get(pk=id)
-        form = PostMeme(request.POST, instance=meme)
+        form = PostMeme(request.POST, request.FILES, instance=meme)
         if form.is_valid():
             form.save()
             return HttpResponseRedirect('/')
