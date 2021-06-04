@@ -1,0 +1,42 @@
+{% extends 'dashboard/base.html' %}
+
+{% block content %}
+<div class="row">
+    <div class="col-sm-8 memes">
+        {% if memes %}
+        {% for meme in memes %}
+        <div class="post">
+            <div class="profile">
+                <img src="https://media-exp1.licdn.com/dms/image/C4E03AQHhfnCFEXzGZQ/profile-displayphoto-shrink_400_400/0/1594975047187?e=1628121600&v=beta&t=8n_97sjkIax2-E03evPGp8MS9Eltkuy-3eWU6Oa6POo"
+                    alt="profile-pic">
+                <div class="name-box">
+                    <span>{{ meme.name }}</span> <br>
+                    <span>{{ meme.date_created }}</span>
+                </div>
+            </div>
+            <div class="caption">
+                {{ meme.caption }}
+            </div>
+            <img src="{{ meme.url }}" alt="">
+            <div class="post-footer">
+                <a href="{% url 'update_meme' meme.id %}" class="btn btn-warning btn-sm">Edit</a>
+                <form class="d-inline" action="{% url 'delete_meme' meme.id %}" method="POST">
+                    {% csrf_token %}
+                    <input class="btn btn-danger btn-sm" type="submit" value="Delete">
+                </form>
+            </div>
+        </div>
+        {% endfor %}
+        {% else %}
+        <h1>No Memes Found :(</h1>
+        {% endif %}
+    </div>
+    <div class="col-sm-4">
+        <form action="" method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input class="btn btn-success" type="submit" value="Post Meme">
+        </form>
+    </div>
+</div>
+{% endblock content %}
