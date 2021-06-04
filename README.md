@@ -2,6 +2,9 @@
 
 Meme Stream is a social website where people can post their Funny & Creative Memes to show to the World. It also provides a built in REST API to fetch the memes which you can use in your personal website or anything else.
 
+## Deployed Project [Link](https://malhotraravi842.pythonanywhere.com/)
+### A Walkthrough of the Project [Video Link](https://youtu.be/CVXy_ob5uk8)
+
 ![XMeme](XMeme.jpg)
 
 ## Tech Stack Used
