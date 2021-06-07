@@ -16,7 +16,9 @@ Including another URLconf
 from django import urls
 from django.contrib import admin
 from django.urls import path, include, re_path
-from dashboard import views
+from django.contrib.auth import views as auth_views
+from dashboard import views as dashboard_views
+from registration import views as r_views
 from django.conf import settings
 from django.conf.urls import url
 from django.conf.urls.static import static
@@ -42,12 +44,21 @@ urlpatterns = [
     path('swagger-ui/', schema_view.with_ui('swagger', cache_timeout=0), name='swagger-ui'),
     path('redoc/', schema_view.with_ui('redoc', cache_timeout=0),name='schema-redoc'),
     path('admin/', admin.site.urls),
-    path('', views.homepage, name='home'),
-    path('delete/<int:id>/', views.delete_meme, name='delete_meme'),
-    path('<int:id>/', views.update_meme, name='update_meme'),
+    path('', dashboard_views.homepage, name='home'),
+    path('delete/<int:id>/', dashboard_views.delete_meme, name='delete_meme'),
+    path('<int:id>/', dashboard_views.update_meme, name='update_meme'),
     path('', include('memeAPI.urls')),
     url(r'^media/(?P<path>.*)$', serve,{'document_root': settings.MEDIA_ROOT}), 
     url(r'^static/(?P<path>.*)$', serve,{'document_root': settings.STATIC_ROOT}), 
+    url(r'^login/$', auth_views.LoginView.as_view(), name='login'),
+    url(r'^logout/$', auth_views.LogoutView.as_view(next_page=None), name='logout'),
+    path('signup/', r_views.signup, name='signup'),
+    # url('^', include('django.contrib.auth.urls')),
+    url(r'^password_reset/$', auth_views.PasswordResetView.as_view(), name='password_reset'),
+    url(r'^password_reset/done/$', auth_views.PasswordResetDoneView.as_view(), name='password_reset_done'),
+    url(r'^reset/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',
+        auth_views.PasswordResetConfirmView.as_view(), name='password_reset_confirm'),
+    url(r'^reset/done/$', auth_views.PasswordResetCompleteView.as_view(), name='password_reset_complete'),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
